@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wallify4k.com/sitemap.xml

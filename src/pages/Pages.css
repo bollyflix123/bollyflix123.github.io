@@ -1,0 +1,300 @@
+.page-padding {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.page-main-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.page-sub-title {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.page-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-md);
+}
+
+.category-select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.category-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Home Section Layouts */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.featured-section {
+  margin-bottom: 3.5rem;
+}
+
+.latest-section {
+  margin-top: 2rem;
+}
+
+/* Categories Pills Bar */
+.categories-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.cat-bar-title {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cat-bar-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cat-bar-chip {
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+}
+
+.cat-bar-chip:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
+}
+
+.cat-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.explore-all {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* Search Page */
+.search-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.search-bar-wrapper {
+  width: 100%;
+  max-width: 650px;
+  margin: 1.5rem 0 1rem 0;
+}
+
+.search-meta {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Legal Pages */
+.legal-content-card, .contact-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.legal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.last-updated {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.legal-body section {
+  margin-bottom: 2rem;
+}
+
+.legal-body h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.legal-body p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group input, .form-group textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  border-color: var(--accent-cyan);
+}
+
+.contact-submit-btn {
+  margin-top: 0.5rem;
+  padding: 0.85rem;
+}
+
+.contact-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+/* 404 Page */
+.notfound-card {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: var(--radius-lg);
+}
+
+.notfound-code {
+  font-family: 'Outfit', sans-serif;
+  font-size: 7rem;
+  font-weight: 800;
+  line-height: 1;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.notfound-title {
+  font-size: 2rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.notfound-text {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+
+.notfound-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 650px) {
+  .form-group-row {
+    grid-template-columns: 1fr;
+  }
+  .legal-content-card, .contact-card {
+    padding: 1.75rem 1.25rem;
+  }
+}

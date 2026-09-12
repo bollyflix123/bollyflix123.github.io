@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="22" fill="#09090d"/>
+  <rect width="90" height="90" x="5" y="5" rx="18" fill="#121218" stroke="#e50914" stroke-width="4"/>
+  <!-- Film Reel Edges -->
+  <rect x="15" y="15" width="12" height="10" rx="2" fill="#e50914"/>
+  <rect x="15" y="45" width="12" height="10" rx="2" fill="#e50914"/>
+  <rect x="15" y="75" width="12" height="10" rx="2" fill="#e50914"/>
+  <rect x="73" y="15" width="12" height="10" rx="2" fill="#e50914"/>
+  <rect x="73" y="45" width="12" height="10" rx="2" fill="#e50914"/>
+  <rect x="73" y="75" width="12" height="10" rx="2" fill="#e50914"/>
+  <!-- Play Triangle Icon -->
+  <polygon points="42,32 72,50 42,68" fill="#e50914"/>
+</svg>

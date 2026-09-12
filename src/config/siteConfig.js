@@ -4,7 +4,7 @@
 
 export const siteConfig = {
   // Live Google Sheet API endpoint (OpenSheet format)
-  GOOGLE_SHEET_API_URL: "https://opensheet.elk.sh/1Lvs5rtT3qRZTeycPQemTcrC7snfpVZILojE8kD9HTUI/Sheet1",
+  GOOGLE_SHEET_API_URL: "https://opensheet.elk.sh/1Lvs5rtT3qRZTeycPQemTcrC7snfpVZILojE8kD9HTUI/FormData",
 
   // Website details
   SITE_NAME: "FilmyZilla",

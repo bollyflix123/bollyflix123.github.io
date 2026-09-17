@@ -29,7 +29,7 @@ export const getYouTubeVideoId = (url) => {
  * @param {boolean} autoplay
  * @returns {string|null}
  */
-export const getYouTubeEmbedUrl = (urlOrId, autoplay = true) => {
+export const getYouTubeEmbedUrl = (urlOrId, autoplay = false) => {
   const videoId = getYouTubeVideoId(urlOrId);
   if (!videoId) return null;
   return `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&rel=0&modestbranding=1&enablejsapi=1`;

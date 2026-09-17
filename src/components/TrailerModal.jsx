@@ -22,7 +22,7 @@ export const TrailerModal = ({ movie, isOpen, onClose }) => {
 
   if (!isOpen || !movie) return null;
 
-  const embedUrl = movie.youtube_embed_url || getYouTubeEmbedUrl(movie.trailer_url);
+  const embedUrl = getYouTubeEmbedUrl(movie.youtube_embed_url || movie.trailer_url, false);
 
   return (
     <div className="trailer-modal-overlay" onClick={onClose}>

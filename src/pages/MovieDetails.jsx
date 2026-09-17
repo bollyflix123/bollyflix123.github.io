@@ -137,7 +137,7 @@ export const MovieDetails = () => {
     .map((t) => t.trim())
     .filter(Boolean);
 
-  const embedUrl = movie.youtube_embed_url || getYouTubeEmbedUrl(movie.trailer_url, false);
+  const embedUrl = getYouTubeEmbedUrl(movie.youtube_embed_url || movie.trailer_url, false);
 
   const breadcrumbs = [
     { name: "Movies & Series", url: "/movies" },

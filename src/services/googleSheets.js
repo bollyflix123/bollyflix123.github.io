@@ -5,7 +5,7 @@ import { getYouTubeEmbedUrl, getYouTubeVideoId } from "../utils/youtube.js";
 
 // In-memory cache
 let cachedMovies = null;
-const CACHE_KEY = "filmyzilla_movies_cache_v3";
+const CACHE_KEY = "filmyzilla_movies_cache_v4";
 
 /**
  * Clean & normalize Google Sheet row keys
@@ -44,7 +44,7 @@ export const normalizeMovie = (rawItem, index) => {
     item.trailer_link ||
     "";
     
-  const embedUrl = getYouTubeEmbedUrl(trailerRaw);
+  const embedUrl = getYouTubeEmbedUrl(trailerRaw, false);
   const videoId = getYouTubeVideoId(trailerRaw);
 
   return {

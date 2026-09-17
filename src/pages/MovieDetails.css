@@ -1,14 +1,18 @@
 .movie-details-page {
   padding-bottom: 4rem;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .trailer-banner-section {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   border: 1px solid rgba(229, 9, 20, 0.4);
   background: #000;
   box-shadow: 0 15px 40px rgba(229, 9, 20, 0.2);
+  width: 100%;
 }
 
 .trailer-banner-header {
@@ -18,26 +22,34 @@
   padding: 1rem 1.5rem;
   background: #0a0a0f;
   border-bottom: 1px solid var(--border-color);
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .banner-title-wrap {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-width: 0;
+  flex: 1;
 }
 
 .banner-title-wrap h2 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .play-red {
   color: #e50914;
+  flex-shrink: 0;
 }
 
 .banner-badge {
   font-size: 0.85rem;
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 .banner-video-container {
@@ -61,13 +73,16 @@
   gap: 2.5rem;
   padding: 2rem;
   border-radius: var(--radius-lg);
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   background: #0b0b10;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .details-preview-column {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .poster-container {
@@ -88,6 +103,8 @@
 .details-info-column {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
 }
 
 .category-pill-wrap {
@@ -95,6 +112,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .flex-align {
@@ -106,8 +124,10 @@
 .details-title {
   font-size: 2.25rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 1.25rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .year-span {
@@ -118,6 +138,7 @@
 
 .synopsis-box {
   margin-bottom: 1.75rem;
+  width: 100%;
 }
 
 .section-label {
@@ -132,6 +153,8 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.65;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .specs-matrix {
@@ -140,6 +163,8 @@
   border-radius: var(--radius-md);
   padding: 1.25rem;
   margin-bottom: 1.75rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .specs-heading {
@@ -160,6 +185,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .spec-icon {
@@ -176,6 +202,7 @@
 .spec-content {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .spec-label {
@@ -187,10 +214,13 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: #fff;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .details-tags-section {
   margin-bottom: 1.75rem;
+  width: 100%;
 }
 
 .tags-heading {
@@ -216,6 +246,9 @@
   color: var(--text-secondary);
   font-size: 0.8rem;
   transition: all var(--transition-fast);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .tag-chip:hover {
@@ -228,6 +261,7 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .red-btn {
@@ -255,15 +289,60 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 950px) {
   .details-layout {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.25rem;
+    gap: 1.75rem;
+    padding: 1.5rem;
   }
   .details-title {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .trailer-banner-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.85rem 1rem;
+  }
+  .banner-title-wrap h2 {
+    font-size: 1rem;
+  }
+  .details-layout {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 2rem;
+  }
+  .poster-container {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .details-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .year-span {
+    font-size: 1.1rem;
+  }
+  .specs-matrix {
+    padding: 0.85rem;
+  }
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .details-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .download-primary-btn, .share-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.85rem 1rem;
   }
 }

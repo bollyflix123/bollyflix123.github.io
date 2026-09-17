@@ -41,3 +41,19 @@
   text-overflow: ellipsis;
   max-width: 260px;
 }
+
+@media (max-width: 640px) {
+  .breadcrumb-nav {
+    margin-bottom: 1rem;
+  }
+  .breadcrumb-list {
+    font-size: 0.8rem;
+    gap: 0.25rem;
+  }
+  .breadcrumb-item {
+    gap: 0.25rem;
+  }
+  .breadcrumb-current {
+    max-width: 140px;
+  }
+}

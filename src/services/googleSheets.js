@@ -1,7 +1,7 @@
-import siteConfig from "../config/siteConfig";
-import sampleMovies from "../data/sampleMovies";
-import slugify from "../utils/slugify";
-import { getYouTubeEmbedUrl, getYouTubeVideoId } from "../utils/youtube";
+import siteConfig from "../config/siteConfig.js";
+import sampleMovies from "../data/sampleMovies.js";
+import slugify from "../utils/slugify.js";
+import { getYouTubeEmbedUrl, getYouTubeVideoId } from "../utils/youtube.js";
 
 // In-memory cache
 let cachedMovies = null;
@@ -103,12 +103,14 @@ export const fetchMovies = async (forceRefresh = false) => {
 
   if (!forceRefresh) {
     try {
-      const stored = sessionStorage.getItem(CACHE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          cachedMovies = parsed;
-          return cachedMovies;
+      if (typeof window !== "undefined" && window.sessionStorage) {
+        const stored = window.sessionStorage.getItem(CACHE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            cachedMovies = parsed;
+            return cachedMovies;
+          }
         }
       }
     } catch (e) {
@@ -117,16 +119,10 @@ export const fetchMovies = async (forceRefresh = false) => {
   }
 
   const apiUrl = siteConfig.GOOGLE_SHEET_API_URL?.trim();
+  const gvizFallbackUrl = "https://docs.google.com/spreadsheets/d/1Lvs5rtT3qRZTeycPQemTcrC7snfpVZILojE8kD9HTUI/gviz/tq?tqx=out:json&sheet=FormData";
 
-  if (!apiUrl) {
-    console.info("GOOGLE_SHEET_API_URL is empty. Serving sample movies.");
-    const normalizedSamples = sampleMovies.map((item, idx) => normalizeMovie(item, idx));
-    cachedMovies = normalizedSamples;
-    return cachedMovies;
-  }
-
-  try {
-    const response = await fetch(apiUrl, {
+  const tryFetchFromUrl = async (url) => {
+    const response = await fetch(url, {
       method: "GET",
       headers: { "Accept": "application/json, text/plain, */*" }
     });
@@ -156,25 +152,46 @@ export const fetchMovies = async (forceRefresh = false) => {
     }
 
     if (rawList && rawList.length > 0) {
-      const normalizedRemote = rawList.map((item, idx) => normalizeMovie(item, idx));
-      cachedMovies = normalizedRemote;
+      return rawList.map((item, idx) => normalizeMovie(item, idx));
+    }
+    throw new Error("No movie items found in sheet response.");
+  };
 
+  try {
+    if (apiUrl) {
+      const normalizedRemote = await tryFetchFromUrl(apiUrl);
+      cachedMovies = normalizedRemote;
       try {
-        sessionStorage.setItem(CACHE_KEY, JSON.stringify(cachedMovies));
+        if (typeof window !== "undefined" && window.sessionStorage) {
+          window.sessionStorage.setItem(CACHE_KEY, JSON.stringify(cachedMovies));
+        }
       } catch (e) {
         console.warn("sessionStorage write failed:", e);
       }
-
       return cachedMovies;
-    } else {
-      throw new Error("No movie items found in sheet response.");
     }
   } catch (error) {
-    console.warn("Failed to fetch from Google Sheets API URL. Falling back to sample movies.", error);
-    const normalizedSamples = sampleMovies.map((item, idx) => normalizeMovie(item, idx));
-    cachedMovies = normalizedSamples;
-    return cachedMovies;
+    console.warn("Primary API URL fetch failed, trying GViz fallback...", error);
+    try {
+      const normalizedRemote = await tryFetchFromUrl(gvizFallbackUrl);
+      cachedMovies = normalizedRemote;
+      try {
+        if (typeof window !== "undefined" && window.sessionStorage) {
+          window.sessionStorage.setItem(CACHE_KEY, JSON.stringify(cachedMovies));
+        }
+      } catch (e) {
+        console.warn("sessionStorage write failed:", e);
+      }
+      return cachedMovies;
+    } catch (fallbackErr) {
+      console.warn("GViz fallback fetch failed as well.", fallbackErr);
+    }
   }
+
+  console.info("Serving sample movies as fallback.");
+  const normalizedSamples = sampleMovies.map((item, idx) => normalizeMovie(item, idx));
+  cachedMovies = normalizedSamples;
+  return cachedMovies;
 };
 
 export const fetchWallpapers = fetchMovies;
